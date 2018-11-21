@@ -1,5 +1,12 @@
 # Membangun RESTful API menggunakan NodeJs 🛰
 
+## Daftar isi
+
+- [Daftar isi](#daftar-isi)
+- [Persiapan](#persiapan)
+- [Routing menggunakan Express](#routing-menggunakan-express)
+- [Menggunakan Mongoose Schema](#menggunakan-mongoose-schema)
+
 ## Persiapan
 
 Sebelum memulai, pastikan alat-alat berikut sudah terinstal. 🛠
@@ -158,7 +165,7 @@ Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan me
 
 ## Menggunakan Mongoose Schema
 
-Mengutip dari [dokumentasi] Mongoose, kurang lebih terjemahannya seperti ini.
+Mengutip dari [dokumentasi](https://mongoosejs.com/docs/guide.html) Mongoose, kurang lebih terjemahannya seperti ini.
 
 > _"Segala sesuatu di Mongoose berasal dari skema. Setiap skema memetakan koleksi MongoDB dan mendefinisikan bentuk dokumen dalam koleksi MongoDB tersebut."_
 
