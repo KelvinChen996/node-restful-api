@@ -75,7 +75,7 @@ Jika tidak ada kesalahan maka outputnya akan seperti ini.
 
 Lalu bila kita akses melalui browser akan tampak seperti ini.
 
-![node-restful-api-img2](https://3.bp.blogspot.com/-QaU1vqTsvds/W_URtuvmeqI/AAAAAAAAAA0/dYAW3xpXp5wPIxDQ0v_fQhtcVOs5Ll3jwCLcBGAs/s1600/node-restful-api-2.png)
+![node-restful-api-img2](https://3.bp.blogspot.com/-TNbgYeSUVjo/W_U1rTtb2oI/AAAAAAAAABU/9XhhvFWPHX8nARkiydtsVNDV3433QaTzQCLcBGAs/s1600/node-restful-api-2.png)
 
 Sampai di sini kita sudah berhasil mempersiapkan project. 🦊
 
@@ -152,6 +152,6 @@ app.listen(port, () => console.log(`Server aktif pada port: ${port}`));
 
 Jalankan aplikasi dengan perintah `node app` seperti sebelumnya. Buka browser lalu akses `localhost:3000/api/barang` maka akan terlihat seperti ini.
 
-![node-restful-api-img3](https://3.bp.blogspot.com/-cjvZcbZhz2k/W_UrDkgWdBI/AAAAAAAAABA/LinnSOGrB5YbdAyk_tYnbe7KsLejmVc3wCLcBGAs/s1600/node-restful-api-3.png)
+![node-restful-api-img3](https://3.bp.blogspot.com/-b71THjm66aU/W_U16zmOViI/AAAAAAAAABc/hn-RLyv5G88w4p8wIXzHdlbtH6hOtU01ACLcBGAs/s1600/node-restful-api-3.png)
 
 Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array. 🦊
