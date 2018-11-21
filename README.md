@@ -156,4 +156,160 @@ Jalankan aplikasi dengan perintah `node app` seperti sebelumnya. Buka browser la
 
 Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array. 🦊
 
+## Menggunakan Mongoose Schema
+
+Mengutip dari [dokumentasi] Mongoose, kurang lebih terjemahannya seperti ini.
+
+> _"Segala sesuatu di Mongoose berasal dari skema. Setiap skema memetakan koleksi MongoDB dan mendefinisikan bentuk dokumen dalam koleksi MongoDB tersebut."_
+
+Mongoose memiliki beberapa tipe skema diantaranya:
+
+- String
+- Number
+- Date
+- Buffer
+- Boolean
+- Mixed
+- ObjectId
+- Array
+- Decimal128
+- Map
+
+Selengkapnya tentang tipe skema bisa dibaca di [sini](https://mongoosejs.com/docs/schematypes.html).
+
+Kembali ke project, buat folder baru dengan nama **models** lalu buat file Js dengan nama **barang.js**. Pada file tersebut akan kita definisikan skema dan model Mongoose.
+
+```js
+const mongoose = require('mongoose');
+
+// Membuat skema `barang`
+const barangSchema = new mongoose.Schema({
+  kode: {
+    type: String,
+    unique: true,
+    required: true,
+    maxlength: 25
+  },
+  nama: {
+    type: String,
+    required: true,
+    maxlength: 50
+  },
+  harga: {
+    type: Number,
+    required: true
+  }
+});
+
+// Membuat model `barang`
+const Barang = mongoose.model('Barang', barangSchema);
+
+// Export model `barang`
+exports.Barang = Barang;
+```
+
+Untuk uji coba pada **app.js** import models `barang` tersebut lalu buat contoh data barang untuk kita simpan ke database.
+
+```js
+const { Barang } = require('./models/barang');
+
+// kode lain
+
+const cobaBarang = new Barang({
+  kode: '1234',
+  nama: 'Pinset Venus',
+  harga: 27500
+});
+
+cobaBarang.save(err => {
+  if (err) return err;
+  return console.log('Data berhasil disimpan.');
+});
+
+// app.listen()
+```
+
+Lalu jalankan aplikasi, jika tidak ada masalah maka data barang akan tersimpan di dabatase.
+
+```bash
+$ node app
+Server aktif pada port: 3000
+Database terhubung...
+Data berhasil disimpan.
+```
+
+Buka aplikasi MongoDB Compas, buat koneksi yang sama dengan yang kita pakai pada aplikasi lalu buka database **db-pos** lalu pada _Collections_ **barangs** akan telihat dokumen yang baru saja kita simpan.
+
+![node-restful-api-img4](https://2.bp.blogspot.com/-CJmCVvTr1_g/W_VhmITaJTI/AAAAAAAAABo/dtbCWB52F0oAdQYh6V-xlQJcKTxKWZCmwCLcBGAs/s1600/node-restful-api-4.png)
+
+Jika saat menjalankan aplikasi terdapat peringatan seperti ini:
+
+```
+(node:18248) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+```
+
+Cukup modifikasi kode koneksi database dengan menambahkan properti `useCreateIndex: true` pada argumen kedua function connect.
+
+```js
+// Membuat koneksi ke MongoDB
+mongoose
+  .connect(
+    'mongodb://192.168.56.101/db-pos',
+    { useNewUrlParser: true, useCreateIndex: true }
+  )
+  .then(() => console.log(`Database terhubung...`))
+  .catch(e =>
+    console.error(
+      `Error! Terjadi kesalahan saat membuat koneksi database\n${e}`
+    )
+  );
+```
+
+Karena hanya untuk uji coba, kita hapus lagi seluruh kode untuk menyimpan dokumen MongoDB tadi kecuali properti `useCreateIndex: true` pada argumen kedua function connect sehingga **app.js** sekarang akan terlihat seperti ini:
+
+```js
+const express = require('express');
+const mongoose = require('mongoose');
+const barang = require('./routes/barang');
+const { Barang } = require('./models/barang');
+
+// Inisialisasi variabel
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Membuat koneksi ke MongoDB
+mongoose
+  .connect(
+    'mongodb://192.168.56.101/db-pos',
+    { useNewUrlParser: true, useCreateIndex: true }
+  )
+  .then(() => console.log(`Database terhubung...`))
+  .catch(e =>
+    console.error(
+      `Error! Terjadi kesalahan saat membuat koneksi database\n${e}`
+    )
+  );
+
+// Menggunakan routes
+app.use('/api/barang', barang);
+
+const cobaBarang = new Barang({
+  kode: '1234',
+  nama: 'Pinset Venus',
+  harga: 27500
+});
+
+cobaBarang.save(err => {
+  if (err) return err;
+  return console.log('Data berhasil disimpan.');
+});
+
+// Aktifkan server
+app.listen(port, () => console.log(`Server aktif pada port: ${port}`));
+```
+
+Sampai di sini kita sudah berhasil melakukan salah satu operasi database yaitu membuat atau menyimpan dokumen. 🦊
+
+> _Pada MongoDB, **barangs** disebut Koleksi dan data yang ada di dalam Koleksi disebut Dokumen_
+
 _**Bersambung...**_

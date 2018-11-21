@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 mongoose
   .connect(
     'mongodb://192.168.56.101/db-pos',
-    { useNewUrlParser: true }
+    { useNewUrlParser: true, useCreateIndex: true }
   )
   .then(() => console.log(`Database terhubung...`))
   .catch(e =>
