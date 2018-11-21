@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const barang = require('./routes/barang');
 
 // Inisialisasi variabel
 const app = express();
@@ -17,6 +18,9 @@ mongoose
       `Error! Terjadi kesalahan saat membuat koneksi database\n${e}`
     )
   );
+
+// Menggunakan routes
+app.use('/api/barang', barang);
 
 // Aktifkan server
 app.listen(port, () => console.log(`Server aktif pada port: ${port}`));

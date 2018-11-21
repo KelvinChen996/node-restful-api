@@ -78,3 +78,80 @@ Lalu bila kita akses melalui browser akan tampak seperti ini.
 ![node-restful-api-img2](https://3.bp.blogspot.com/-QaU1vqTsvds/W_URtuvmeqI/AAAAAAAAAA0/dYAW3xpXp5wPIxDQ0v_fQhtcVOs5Ll3jwCLcBGAs/s1600/node-restful-api-2.png)
 
 Sampai di sini kita sudah berhasil mempersiapkan project. 🦊
+
+## Routing menggunakan Express
+
+Routing sederhananya mengacu pada bagaimana aplikasi (server) menangani request dari client. Misal pada url berikut.
+
+```
+https://api.tokosaya.com/barang?id=789172936
+```
+
+Ketika client mengakses url tersebut aplikasi kita akan menerima request pada path `/barang` dengan parameter `?id=789172936` lalu router akan mengecek apakah terdapat fungsi (_Route Handlers_) yang menangani request pada path yang memiliki parameter tersebut.
+
+Di framework Express telah disediakan module untuk menangani hal tersebut yaitu [express.Router()](https://expressjs.com/en/4x/api.html#router).
+
+Kembali ke project, buat folder baru pada root folder project dengan nama **routes** dan di folder tersebut buat file Js dengan nama **barang.js** kemudian ketikan kode ini.
+
+```js
+const express = require('express');
+
+// Inisialisasi variabel
+const router = express.Router();
+
+// Tangani request get method
+router.get('/', (req, res) => {
+  // Mengirim respon ke client
+  res.send(['Barang1', 'Barang2', 'Barang3', 'BarangN']);
+});
+
+// Export router
+module.exports = router;
+```
+
+Lalu pada **app.js** kita import module barang tersebut dan tambahkan ke Express object sebagai _middleware_ seperti ini.
+
+```js
+const barang = require('./routes/barang');
+
+// kode lainnya
+
+app.use('/api/barang', barang);
+```
+
+Sehingga kode lengkap **app.js** akan terlihat seperti ini.
+
+```js
+const express = require('express');
+const mongoose = require('mongoose');
+const barang = require('./routes/barang');
+
+// Inisialisasi variabel
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Membuat koneksi ke MongoDB
+mongoose
+  .connect(
+    'mongodb://192.168.56.101/db-pos',
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log(`Database terhubung...`))
+  .catch(e =>
+    console.error(
+      `Error! Terjadi kesalahan saat membuat koneksi database\n${e}`
+    )
+  );
+
+// Menggunakan routes
+app.use('/api/barang', barang);
+
+// Aktifkan server
+app.listen(port, () => console.log(`Server aktif pada port: ${port}`));
+```
+
+Jalankan aplikasi dengan perintah `node app` seperti sebelumnya. Buka browser lalu akses `localhost:3000/api/barang` maka akan terlihat seperti ini.
+
+![node-restful-api-img3](https://3.bp.blogspot.com/-cjvZcbZhz2k/W_UrDkgWdBI/AAAAAAAAABA/LinnSOGrB5YbdAyk_tYnbe7KsLejmVc3wCLcBGAs/s1600/node-restful-api-3.png)
+
+Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array. 🦊
