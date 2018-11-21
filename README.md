@@ -155,3 +155,5 @@ Jalankan aplikasi dengan perintah `node app` seperti sebelumnya. Buka browser la
 ![node-restful-api-img3](https://3.bp.blogspot.com/-b71THjm66aU/W_U16zmOViI/AAAAAAAAABc/hn-RLyv5G88w4p8wIXzHdlbtH6hOtU01ACLcBGAs/s1600/node-restful-api-3.png)
 
 Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array. 🦊
+
+_**Bersambung...**_
