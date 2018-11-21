@@ -1,8 +1,8 @@
-# 🛰 Membangun RESTful API menggunakan NodeJs
+# Membangun RESTful API menggunakan NodeJs 🛰
 
 ## Persiapan
 
-🛠 Sebelum memulai, pastikan alat-alat berikut sudah terinstal.
+Sebelum memulai, pastikan alat-alat berikut sudah terinstal. 🛠
 
 - [NodeJs](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com)
@@ -77,7 +77,7 @@ Lalu bila kita akses melalui browser akan tampak seperti ini.
 
 ![node-restful-api-img2](https://3.bp.blogspot.com/-TNbgYeSUVjo/W_U1rTtb2oI/AAAAAAAAABU/9XhhvFWPHX8nARkiydtsVNDV3433QaTzQCLcBGAs/s1600/node-restful-api-2.png)
 
-🦊 Sampai di sini kita sudah berhasil mempersiapkan project.
+Sampai di sini kita sudah berhasil mempersiapkan project. 🦊
 
 ## Routing menggunakan Express
 
@@ -154,6 +154,6 @@ Jalankan aplikasi dengan perintah `node app` seperti sebelumnya. Buka browser la
 
 ![node-restful-api-img3](https://3.bp.blogspot.com/-b71THjm66aU/W_U16zmOViI/AAAAAAAAABc/hn-RLyv5G88w4p8wIXzHdlbtH6hOtU01ACLcBGAs/s1600/node-restful-api-3.png)
 
-🦊 Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array.
+Ketika client mengakses url/path yang kita buat aplikasi akan merespon dengan mengirimkan array. 🦊
 
 _**Bersambung...**_
