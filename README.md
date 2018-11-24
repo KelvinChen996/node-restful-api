@@ -6,6 +6,19 @@
 - [Persiapan](#persiapan)
 - [Routing menggunakan Express](#routing-menggunakan-express)
 - [Menggunakan Mongoose Schema](#menggunakan-mongoose-schema)
+- Menggunakan Environment Variabel
+- Parameter Route
+- Menghandel HTTP Requests
+- Menggunakan Postman
+- Validasi input dengan Joi
+- Menggunakan Middleware
+- Config untuk konfigurasi
+- Validasi data menggunakan Mongoose
+- Authentication dan Authorization
+- Handle dan Logging Error
+- Unit Test dan Integration Test
+- Test Driven Development
+- Deploy
 
 ## Persiapan
 
