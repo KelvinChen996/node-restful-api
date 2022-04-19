@@ -22,7 +22,7 @@
 
 ## Persiapan
 
-Sebelum memulai, pastikan alat-alat berikut sudah terinstal. 🛠
+Sebelum memulai, pastikan alat-alat berikut sudah terinstal ya. 🛠
 
 - [NodeJs](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com)
